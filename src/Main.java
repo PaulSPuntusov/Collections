@@ -4,18 +4,21 @@ public class Main {
     public static void main(String[] args) {
         int n = 20;
         int s;
-        ArrayList<Integer> first = new ArrayList(n);
+        ArrayList<Integer> intList = new ArrayList(n);
         for (int i = 0; i < n ; i ++) {
-            first.add(i, i);
-            System.out.print(first.get(i)+" ");
+            intList.add(i, i);
+            System.out.print(intList.get(i)+" ");
         }
         System.out.println("");
-        for (int i = 0; i < n - 1; i = i + 2) {
-            s = first.get(i);
-            first.set(i, first.get(i + 1));
-            first.set(i+1, s);
-            System.out.print(first.get(i)+" ");
-            System.out.print(first.get(i+1)+" ");
+        public static void bubbleSort(ArrayList intList){
+            for(int i = 0; i < intList.size() - i; i++){
+                for(int j = 0; j < intList.get(i) - i - 1; j++){
+                    int temp = intList.get(j);
+                    intList.set(j,intList.get(j+1));
+                    intList.set(j+1,temp);
+                }
+                System.out.print(intList.get(i)+" ");
+            }
         }
     }
 }
