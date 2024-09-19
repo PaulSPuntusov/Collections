@@ -3,13 +3,20 @@ import java.util.ArrayList;
 public class Main {
     static int n = 20;
     static int[] intArray = new int[n];
+    static ArrayList<Integer> intList = new ArrayList(n);
     public static void main(String[] args) {
-        ArrayList<Integer> intList = new ArrayList(n);
-        for (int i = 0; i < n ; i ++) {
+
+        for (int i = 0; i < n; i++) {
             intList.add(i, i);
-            System.out.print(intList.get(i)+" ");
+            intArray[i] = i;
+            System.out.print(intList.get(i) + "*");
+            System.out.print(intArray[i] + " ");
         }
         System.out.println("");
+        reverse(intArray);
+        System.out.println("");
+        listReverse(intList);
+
         /*
         public static void bubbleSort(ArrayList intList){
         for(int i = 0; i < intList.size() - i; i++){
@@ -27,23 +34,26 @@ public class Main {
          */
         //Integer[] intArray = intList.toArray(new Integer[0]);
 
-        for(int i = 0; i < intArray.length; i++){
-            intArray[i] = intList.get(i);
-            System.out.println(intArray[i]);
-        }
-        bubbleSort(intArray);
     }
-    public static void bubbleSort(int[] intArray){
-        for(int i = 0; i < intArray.length - 1; i++){
-            for(int j = 0; j < intArray.length - i - 1; j++){
-                if(intArray[j] > intArray[j + 1]){
-                    int temp = intArray[j];
-                    intArray[j] = intArray[j+1];
-                    intArray[j+1] = temp;
-                }
-            }
-            System.out.print(intArray[i]+" ");
+    public static void reverse(int[] intArray){
+        int n = intArray.length - 1;
+        System.out.println("Array: ");
+        for(int i = 0; i < intArray.length / 2; i++){
+            int temp = intArray[i];
+            intArray[i] = intArray[n - i];
+            intArray[n - i] = temp;
         }
+        for(int i = 0; i < intArray.length; i++) System.out.print(intArray[i]+" ");
+    }
+    public static void listReverse(ArrayList intList){
+        int n = intList.size()-1;
+        System.out.println("List: ");
+        for(int i = 0; i < (intList.size()) / 2; i++){
+            Integer temp = (Integer) intList.get(i);
+            intList.set(i,intList.get(n-i));
+            intList.set((n - i),temp);
+        }
+        for (int i = 0; i < intList.size(); i++) System.out.print(intList.get(i)+" ");
     }
 
 }
